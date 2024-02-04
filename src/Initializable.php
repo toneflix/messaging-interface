@@ -33,6 +33,6 @@ trait Initializable
 
         $this->accessToken = $accessToken;
         $this->senderID = $senderID;
-        $this->senderID = $gateway;
+        $this->gateway = $gateway;
     }
 }
