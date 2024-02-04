@@ -12,5 +12,13 @@ trait Initializable
     {
         $this->accessToken = $accessToken;
         $this->senderID = $senderID;
+
+        if (!$this->senderID) {
+            throw new InitializationException("Sender ID is missing.", 1);
+        }
+
+        if (!$this->accessToken) {
+            throw new InitializationException("No access token/Api key provided.", 1);
+        }
     }
 }
