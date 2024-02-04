@@ -2,17 +2,26 @@
 
 namespace  ToneflixCode\SmsInterface;
 
+use ToneflixCode\SmsInterface\Exceptions\InitializationException;
+
 trait Initializable
 {
     public string $accessToken;
 
     public string $senderID;
 
-    public function configure(string $accessToken, string $senderID)
-    {
-        $this->accessToken = $accessToken;
-        $this->senderID = $senderID;
+    public string $gateway;
 
+    /**
+     * Load the configuration
+     *
+     * @param string $accessToken
+     * @param string $senderID
+     * @param string $gateway
+     * @return void
+     */
+    public function configure(string $senderID, string $accessToken, string $gateway = null): void
+    {
         if (!$this->senderID) {
             throw new InitializationException("Sender ID is missing.", 1);
         }
@@ -20,5 +29,9 @@ trait Initializable
         if (!$this->accessToken) {
             throw new InitializationException("No access token/Api key provided.", 1);
         }
+
+        $this->accessToken = $accessToken;
+        $this->senderID = $senderID;
+        $this->senderID = $gateway;
     }
 }
