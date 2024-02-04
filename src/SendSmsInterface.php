@@ -10,7 +10,7 @@ interface SendSmsInterface
      * @param string $to
      * @param  string $message
      *
-     * @throws SmsSendingException
+     * @throws \ToneflixCode\SmsInterface\Exceptions\SmsSendingException
      * @return bool
      *
     */

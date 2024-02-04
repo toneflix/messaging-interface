@@ -1,6 +1,6 @@
 <?php
 
-namespace  ToneflixCode\SmsInterface;
+namespace  ToneflixCode\SmsInterface\Exceptions;
 
 class SmsSendingException extends \Exception
 {
