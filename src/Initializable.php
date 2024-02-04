@@ -18,15 +18,16 @@ trait Initializable
      * @param string $accessToken
      * @param string $senderID
      * @param string $gateway
+     *
      * @return void
      */
     public function configure(string $senderID, string $accessToken, string $gateway = null): void
     {
-        if (!$this->senderID) {
+        if (!$senderID) {
             throw new InitializationException("Sender ID is missing.", 1);
         }
 
-        if (!$this->accessToken) {
+        if (!$accessToken) {
             throw new InitializationException("No access token/Api key provided.", 1);
         }
 
