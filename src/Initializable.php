@@ -15,8 +15,8 @@ trait Initializable
     /**
      * Load the configuration
      *
-     * @param string $accessToken
      * @param string $senderID
+     * @param string $accessToken
      * @param string $gateway
      *
      * @return void
