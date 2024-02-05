@@ -1,9 +1,9 @@
 <?php
 
-namespace  ToneflixCode\SmsInterface;
+namespace  ToneflixCode\MessagingInterface;
 
-use ToneflixCode\SmsInterface\Exceptions\InitializationException;
-use ToneflixCode\SmsInterface\Exceptions\SmsSendingException;
+use ToneflixCode\MessagingInterface\Exceptions\InitializationException;
+use ToneflixCode\MessagingInterface\Exceptions\SmsSendingException;
 
 trait Initializable
 {

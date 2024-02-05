@@ -1,6 +1,6 @@
 {
-    "name": "toneflix-code/sms-interface",
-    "description": "An interface for SMS delivery services.",
+    "name": "toneflix-code/messaging-interface",
+    "description": "An interface for SMS/Voice message delivery services.",
     "type": "library",
     "license": "MIT",
     "require": {
@@ -8,7 +8,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ToneflixCode\\SmsInterface\\": "src/"
+            "ToneflixCode\\MessagingInterface\\": "src/"
         }
     },
     "authors": [

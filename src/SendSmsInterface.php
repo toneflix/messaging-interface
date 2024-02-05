@@ -1,6 +1,6 @@
 <?php
 
-namespace  ToneflixCode\SmsInterface;
+namespace  ToneflixCode\MessagingInterface;
 
 interface SendSmsInterface
 {
@@ -10,7 +10,7 @@ interface SendSmsInterface
      * @param string $to
      * @param  string $message
      *
-     * @throws \ToneflixCode\SmsInterface\Exceptions\SmsSendingException
+     * @throws \ToneflixCode\MessagingInterface\Exceptions\SmsSendingException
      * @return bool
      *
     */
