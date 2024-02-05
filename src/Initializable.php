@@ -60,7 +60,7 @@ trait Initializable
      *
      * @return array
      */
-    public function params(string $recipients, ?string $message = null, array $options = []): array
+    public function params(string $recipients, ?string $message = null, array $options = [], $voice = false): array
     {
         $params = [
             [
@@ -68,7 +68,7 @@ trait Initializable
                 'contents' => $this->apiKey,
             ],
             [
-                'name' => 'senderID',
+                'name' => !$voice ? 'senderID' : 'callerID',
                 'contents' => $this->senderID,
             ],
             [
