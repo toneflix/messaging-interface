@@ -2,7 +2,7 @@
 
 namespace  ToneflixCode\SmsInterface;
 
-interface SendSmsInterface
+interface SendOtpInterface
 {
     /**
      *  Send an otp to a number.
@@ -16,5 +16,5 @@ interface SendSmsInterface
      * @return bool
      *
     */
-    public function send(string $to, string $otp, string $appnamecode, string $templatecode): bool;
+    public function sendOtp(string $to, string $otp, string $appnamecode, string $templatecode): bool;
 }

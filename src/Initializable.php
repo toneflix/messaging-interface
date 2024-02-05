@@ -3,6 +3,7 @@
 namespace  ToneflixCode\SmsInterface;
 
 use ToneflixCode\SmsInterface\Exceptions\InitializationException;
+use ToneflixCode\SmsInterface\Exceptions\SmsSendingException;
 
 trait Initializable
 {
@@ -11,6 +12,10 @@ trait Initializable
     public string $senderID;
 
     public string $gateway;
+
+    public string $baseUrl;
+
+    public string $endpoint;
 
     /**
      * Load the configuration
@@ -34,5 +39,63 @@ trait Initializable
         $this->apiKey = $apiKey;
         $this->senderID = $senderID;
         $this->gateway = $gateway;
+    }
+
+    /**
+     * Indicate that this message should be sent using the coporate endpoint
+     *
+     */
+    public function corporate(): self
+    {
+        $this->endpoint = 'corporate';
+        return $this;
+    }
+
+
+    /**
+     * Build the multipart parameters
+     *
+     * @param string $recipients
+     * @param ?string $message
+     *
+     * @return array
+     */
+    public function params(string $recipients, ?string $message = null, array $options = []): array
+    {
+        $params = [
+            [
+                'name' => 'token',
+                'contents' => $this->apiKey,
+            ],
+            [
+                'name' => 'senderID',
+                'contents' => $this->senderID,
+            ],
+            [
+                'name' => 'recipients',
+                'contents' => $recipients
+            ],
+            [
+                'name' => 'gateway',
+                'contents' => $this->gateway,
+            ]
+        ];
+
+        if (count($options)) {
+            foreach ($options as $option) {
+                $params[] = $option;
+            }
+        } else {
+            if (!$message) {
+                throw new SmsSendingException("Cannot send Empty Message.", 1);
+            }
+
+            $params[] = [
+                'name' => 'message',
+                'contents' => $message
+            ];
+        }
+
+        return $params;
     }
 }
