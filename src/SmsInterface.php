@@ -2,7 +2,7 @@
 
 namespace  ToneflixCode\MessagingInterface;
 
-interface SendSmsInterface
+interface SmsInterface
 {
     /**
      *  Send an SMS to a single recipient.

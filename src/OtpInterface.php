@@ -2,7 +2,7 @@
 
 namespace  ToneflixCode\MessagingInterface;
 
-interface SendOtpInterface
+interface OtpInterface
 {
     /**
      *  Send an otp to a number.
