@@ -11,11 +11,11 @@ trait Initializable
 
     public string $senderID;
 
-    public string $gateway;
-
     public string $baseUrl;
 
     public string $endpoint;
+
+    public ?string $gateway;
 
     /**
      * Load the configuration
@@ -26,7 +26,7 @@ trait Initializable
      *
      * @return void
      */
-    public function configure(string $senderID, string $apiKey, string $gateway = null): void
+    public function configure(string $senderID, string $apiKey, ?string $gateway = null): void
     {
         if (!$senderID) {
             throw new InitializationException("Sender ID is missing.", 1);
@@ -60,7 +60,7 @@ trait Initializable
      *
      * @return array
      */
-    public function params(string $recipients, ?string $message = null, array $options = [], $voice = false): array
+    public function params(string $recipients, ?string $message = null, array $options = [], bool $voice = false): array
     {
         $params = [
             [
